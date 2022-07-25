@@ -1,0 +1,17 @@
+.profile__button {
+  width: 150px;
+  height: 50px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 660px) {
+  .profile__button {
+    width: 282px;
+    height: 50px;
+    background-size: cover;
+    margin: 0 auto;
+  }
+}

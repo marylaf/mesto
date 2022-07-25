@@ -1,0 +1,12 @@
+.elements__block {
+  max-width: 100%;
+  max-height: 79px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-left: 21px;
+  padding-right: 15px;
+  padding-bottom: 31px;
+  border-radius: 0 0 10px 10px;
+}

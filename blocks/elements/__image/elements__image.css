@@ -1,0 +1,8 @@
+.elements__image {
+  background-image: url("../../../images/nikolay-vorobyev-QJ2HGuSSQz0-unsplash\(1\).jpg");
+  width: 100%;
+  height: 282px;
+  background-size: cover;
+  border-radius: 10px 10px 0 0;
+  display: block;
+}

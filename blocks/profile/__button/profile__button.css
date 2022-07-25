@@ -2,16 +2,22 @@
   width: 150px;
   height: 50px;
   background: none;
-  border: none;
   padding: 0;
   cursor: pointer;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  opacity: 1;
 }
 
 @media screen and (max-width: 660px) {
   .profile__button {
     width: 282px;
     height: 50px;
-    background-size: cover;
     margin: 0 auto;
   }
+}
+
+.profile__button:hover {
+  opacity: 0.6;
+  transition: opacity 0.5s linear;
 }

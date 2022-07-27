@@ -198,17 +198,24 @@
           </div>
         </div>
       </section>
+      <section class="popup popup_opened">
+        <form class="popup__container">
+          <button type="reset"><svg width="32" viewBox="0 0 32 32" class="popup__button-reset" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 28.8 19.2 16 32 3.2 28.8 0 16 12.8 3.2 0 0 3.2 12.8 16 0 28.8 3.2 32 16 19.2 28.8 32l3.2-3.2Z" fill="#fff"/></svg>
+          </button>
+          <h2 class="popup__correct">Редактировать профиль</h2>
+          <fieldset class="popup__item">
+            <input type="text" class="popup__info" value="Жак-Ив Кусто"></input>
+          </fieldset>
+          <fieldset class="popup__item">
+            <input type="text" class="popup__info" value="Исследователь океана"></input>
+          </fieldset>
+          <button type="submit" class="popup__button-save">Сохранить</button>
+        </form>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
-    <section class="popup">
-      <div class="popup__container" id="myForm">
-        <h2>Редактировать профиль</h2>
-        <p class="popup__title">Жак-Ив Кусто</p>
-        <p class="popup__subtitle">Исследователь океана</p>
-        <p class="popup__button-save">Сохранить</p>
-      </div>
-    </section>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

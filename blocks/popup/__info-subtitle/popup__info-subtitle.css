@@ -1,4 +1,4 @@
-.popup__info {
+.popup__info-subtitle {
   padding: 0;
   min-width: 100%;
   font-weight: 400;
@@ -8,5 +8,6 @@
   margin: 0;
   border: none;
   padding-bottom: 13px;
+  padding-top: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }

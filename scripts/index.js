@@ -1,8 +1,8 @@
 let popup = document.querySelector(".popup");
 let editButton = document.querySelector(".profile__pen");
-let closeButton = document.querySelector(".popup__button-reset");
-let formTitle = document.querySelector(".popup__info_title");
-let formSubtitle = document.querySelector(".popup__info_subtitle");
+let closeButton = document.querySelector(".popup__button-drop");
+let formTitle = document.querySelector(".popup__info-title");
+let formSubtitle = document.querySelector(".popup__info-subtitle");
 let saveButton = document.querySelector(".popup__container");
 
 function openPopup() {
@@ -20,8 +20,8 @@ console.log(formTitle);
 console.log(formSubtitle);
 
 function editHandler() {
-  document.getElementById("popup__info_title").value = formTitle.textContent;
-  document.getElementById("popup__info_subtitle").value =
+  document.getElementById("popup__info-title").value = formTitle.textContent;
+  document.getElementById("popup__info-subtitle").value =
     formSubtitle.textContent;
 }
 
@@ -29,10 +29,12 @@ editButton.addEventListener("click", editHandler);
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  nameInput = document.querySelector(".popup__info_title").value;
-  jobInput = document.querySelector(".popup__info_subtitle").value;
+  nameInput = formTitle.value;
+  jobInput = formSubtitle.value;
   formTitle.textContent = nameInput;
   formSubtitle.textContent = jobInput;
+
+  closePopup();
 }
 
 saveButton.addEventListener("submit", formSubmitHandler);

@@ -1,4 +1,4 @@
-.popup__button-reset {
+.popup__button-drop {
   max-width: 32px;
   max-height: 32px;
   border: none;
@@ -10,14 +10,14 @@
   opacity: 1;
 }
 
-.popup__button-reset:hover {
+.popup__button-drop:hover {
   cursor: pointer;
   opacity: 0.6;
   transition: opacity 0.5s linear;
 }
 
 @media screen and (max-width: 660px) {
-  .popup__button-reset {
+  .popup__button-drop {
     max-width: 20px;
     max-height: 20px;
     right: 0;

@@ -1,12 +1,15 @@
 let popup = document.querySelector(".popup");
-let editButton = document.querySelector(".profile__pen");
+let editButton = document.querySelector(".profile__pencil");
 let closeButton = document.querySelector(".popup__button-drop");
 let formTitle = document.querySelector(".profile__title");
 let formSubtitle = document.querySelector(".profile__subtitle");
-let saveButton = document.querySelector(".popup__container");
+let popupForm = document.querySelector(".popup__form");
 
 function openPopup() {
   popup.classList.add("popup_opened");
+  document.getElementById("popup__info_title").value = formTitle.textContent;
+  document.getElementById("popup__info_subtitle").value =
+    formSubtitle.textContent;
 }
 
 function closePopup() {
@@ -16,27 +19,14 @@ function closePopup() {
 editButton.addEventListener("click", openPopup);
 closeButton.addEventListener("click", closePopup);
 
-console.log(formTitle);
-console.log(formSubtitle);
-
-function editHandler() {
-  document.getElementById("popup__info-title").value = formTitle.textContent;
-  document.getElementById("popup__info-subtitle").value =
-    formSubtitle.textContent;
-}
-
-editButton.addEventListener("click", editHandler);
-
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  nameInput = document.querySelector("popup__info-title").value;
-  jobInput = document.querySelector("popup__info-subtitle").value;
-  // nameInput = formTitle.value;
-  // jobInput = formSubtitle.value;
+  nameInput = document.querySelector("popup__info_title").value;
+  jobInput = document.querySelector("popup__info_subtitle").value;
   formTitle.textContent = nameInput;
   formSubtitle.textContent = jobInput;
 
-  // closePopup();
+  closePopup();
 }
 
-saveButton.addEventListener("submit", formSubmitHandler);
+popupForm.addEventListener("submit", formSubmitHandler);

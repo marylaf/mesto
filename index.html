@@ -6,7 +6,7 @@
     <meta name="keywords" content="Mesto, Kusto" />
     <meta name="description" content="Russian cities" />
     <meta name="author" content="Maria Lafutkina" />
-    <title>Mesto</title>
+    <title>Место</title>
     <link rel="stylesheet" type="text/css" href="./pages/index.css" />
   </head>
   <body class="page">
@@ -25,23 +25,17 @@
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
               <p class="profile__subtitle">Исследователь океана</p>
-              <button type="button" class="profile__pencil">
-                <img
-                  class="profile__pen"
-                  src="./images/Edit.Button(1).png"
-                  alt="кнопка"
-                />
-              </button>
+              <button type="button" class="profile__pencil"></button>
             </div>
           </div>
           <button type="button" class="profile__button">
-            <img src="./images/Vector(4).svg" alt="кнопка" />
+            <div class="profile__add"></div>
           </button>
         </div>
       </section>
       <section class="elements">
         <div class="elements__container">
-          <div class="elements__item">
+          <article class="elements__item">
             <img
               class="elements__image"
               src="./images/nikolay-vorobyev-QJ2HGuSSQz0-unsplash(1).jpg"
@@ -49,12 +43,10 @@
             />
             <div class="elements__block">
               <h2 class="elements__name">Москва</h2>
-              <button type="button" class="elements__button">
-                <img src="./images/Vector(3)(1).svg" alt="лайк" />
-              </button>
+              <button type="button" class="elements__button"></button>
             </div>
-          </div>
-          <div class="elements__item">
+          </article>
+          <article class="elements__item">
             <img
               class="elements__image"
               src="./images/gene-gallin-o_5v356TFYY-unsplash(1).jpg"
@@ -62,12 +54,10 @@
             />
             <div class="elements__block">
               <h2 class="elements__name">Владимир</h2>
-              <button type="button" class="elements__button">
-                <img src="./images/Vector(3)(1).svg" alt="лайк" />
-              </button>
+              <button type="button" class="elements__button"></button>
             </div>
-          </div>
-          <div class="elements__item">
+          </article>
+          <article class="elements__item">
             <img
               class="elements__image"
               src="./images/sid-konious-IbEGEhfnNWE-unsplash(1).jpg"
@@ -75,12 +65,10 @@
             />
             <div class="elements__block">
               <h2 class="elements__name">Краснодар</h2>
-              <button type="button" class="elements__button">
-                <img src="./images/Vector(3)(1).svg" alt="лайк" />
-              </button>
+              <button type="button" class="elements__button"></button>
             </div>
-          </div>
-          <div class="elements__item">
+          </article>
+          <article class="elements__item">
             <img
               class="elements__image"
               src="./images/dima-fedorov-ZZkw00YCY1E-unsplash(1).jpg"
@@ -88,12 +76,10 @@
             />
             <div class="elements__block">
               <h2 class="elements__name">Сочи</h2>
-              <button type="button" class="elements__button">
-                <img src="./images/Vector(3)(1).svg" alt="лайк" />
-              </button>
+              <button type="button" class="elements__button"></button>
             </div>
-          </div>
-          <div class="elements__item">
+          </article>
+          <article class="elements__item">
             <img
               class="elements__image"
               src="./images/valeriy-labushkin-I-HjoGj7guY-unsplash(1).jpg"
@@ -101,12 +87,10 @@
             />
             <div class="elements__block">
               <h2 class="elements__name">Владивосток</h2>
-              <button type="button" class="elements__button">
-                <img src="./images/Vector(3)(1).svg" alt="лайк" />
-              </button>
+              <button type="button" class="elements__button"></button>
             </div>
-          </div>
-          <div class="elements__item">
+          </article>
+          <article class="elements__item">
             <img
               class="elements__image"
               src="./images/alina-makhatyrova-Lsa1zDO7H6c-unsplash(1).jpg"
@@ -114,41 +98,37 @@
             />
             <div class="elements__block">
               <h2 class="elements__name">Якутск</h2>
-              <button type="button" class="elements__button">
-                <img src="./images/Vector(3)(1).svg" alt="лайк" />
-              </button>
+              <button type="button" class="elements__button"></button>
             </div>
-          </div>
+          </article>
         </div>
       </section>
-      <div class="popup popup_opened">
-        <form class="popup__container" id="popup__container">
-          <button class="popup__button-drop" type="reset">
-            <img
-              src="./images/Close.Icon(1).png"
-              alt="храм"
-              class="popup__button"
-            />
-          </button>
-          <h2 class="popup__correct">Редактировать профиль</h2>
-          <fieldset class="popup__item">
-            <input
-              type="text"
-              class="popup__info-title"
-              id="popup__info-title"
-              value="Жак-Ив Кусто"
-            />
-          </fieldset>
-          <fieldset class="popup__item">
-            <input
-              type="text"
-              class="popup__info-subtitle"
-              id="popup__info-subtitle"
-              value="Исследователь океана"
-            />
-          </fieldset>
-          <input type="submit" class="popup__button-save" value="Сохранить" />
-        </form>
+      <div class="popup">
+        <div class="popup__container">
+          <button class="popup__button-drop" type="button"></button>
+          <h3 class="popup__correct">Редактировать профиль</h3>
+          <form name="popup__form" id="popup__form">
+            <div class="popup__item">
+              <input
+                type="text"
+                class="popup__info popup__info_title"
+                id="popup__info_title"
+                name="popup__info_title"
+                value="Жак-Ив Кусто"
+              />
+            </div>
+            <div class="popup__item">
+              <input
+                type="text"
+                class="popup__info popup__info_subtitle"
+                id="popup__info_subtitle"
+                value="Исследователь океана"
+                name="popup__info_subtitle"
+              />
+            </div>
+            <input type="submit" class="popup__button-save" value="Сохранить" />
+          </form>
+        </div>
       </div>
     </main>
     <footer class="footer">

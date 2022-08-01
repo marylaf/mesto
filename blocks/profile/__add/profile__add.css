@@ -1,10 +1,10 @@
-.profile__add {
-  background-image: url("../../../images/Vector(4).svg");
+/* .profile__add {
+  background-image: url("../../../images/Add.Button.svg");
   background-size: cover;
   width: 22px;
   height: 22px;
   margin: auto;
-}
+} */
 
 @media screen and (max-width: 660px) {
   .profile__add {

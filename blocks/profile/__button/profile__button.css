@@ -2,9 +2,12 @@
   width: 150px;
   height: 50px;
   background: none;
+  background-repeat: no-repeat;
+  background-image: url("../../../images/Add.Button.svg");
+  background-size: cover;
   padding: 0;
   cursor: pointer;
-  border: 2px solid #ffffff;
+  border: none;
   border-radius: 2px;
   opacity: 1;
 }

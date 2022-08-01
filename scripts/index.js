@@ -3,7 +3,9 @@ let editButton = document.querySelector(".profile__pencil");
 let closeButton = document.querySelector(".popup__button-drop");
 let formTitle = document.querySelector(".profile__title");
 let formSubtitle = document.querySelector(".profile__subtitle");
-let popupForm = document.querySelector(".popup__form");
+let popupForm = document.querySelector("#popup__form");
+let nameInput;
+let jobInput;
 
 function openPopup() {
   popup.classList.add("popup_opened");
@@ -15,7 +17,6 @@ function openPopup() {
 function closePopup() {
   popup.classList.remove("popup_opened");
 }
-
 editButton.addEventListener("click", openPopup);
 closeButton.addEventListener("click", closePopup);
 

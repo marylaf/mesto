@@ -9,8 +9,9 @@ let jobInput;
 
 function openPopup() {
   popup.classList.add("popup_opened");
-  document.getElementById("popup__info_title").value = formTitle.textContent;
-  document.getElementById("popup__info_subtitle").value =
+  document.getElementById("popup__info_form_title").value =
+    formTitle.textContent;
+  document.getElementById("popup__info_form_subtitle").value =
     formSubtitle.textContent;
 }
 
@@ -22,8 +23,8 @@ closeButton.addEventListener("click", closePopup);
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  nameInput = document.querySelector("popup__info_title").value;
-  jobInput = document.querySelector("popup__info_subtitle").value;
+  nameInput = document.querySelector("popup__info_form_title").value;
+  jobInput = document.querySelector("popup__info_form_subtitle").value;
   formTitle.textContent = nameInput;
   formSubtitle.textContent = jobInput;
 

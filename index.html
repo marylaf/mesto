@@ -107,25 +107,23 @@
         <div class="popup__container">
           <button class="popup__button-drop" type="button"></button>
           <h3 class="popup__correct">Редактировать профиль</h3>
-          <form name="popup__form" id="popup__form">
-            <div class="popup__item">
-              <input
-                type="text"
-                class="popup__info popup__info_title"
-                id="popup__info_title"
-                name="popup__info_title"
-                value="Жак-Ив Кусто"
-              />
-            </div>
-            <div class="popup__item">
-              <input
-                type="text"
-                class="popup__info popup__info_subtitle"
-                id="popup__info_subtitle"
-                value="Исследователь океана"
-                name="popup__info_subtitle"
-              />
-            </div>
+          <form name="popup__form" id="popup__form" class="popup__form">
+            <input
+              type="text"
+              class="popup__info popup__info_form_title"
+              id="popup__info_form_title"
+              name="popup__info_form_title"
+              value="Жак-Ив Кусто"
+            />
+
+            <input
+              type="text"
+              class="popup__info popup__info_form_subtitle"
+              id="popup__info_form_subtitle"
+              value="Исследователь океана"
+              name="popup__info_form_subtitle"
+            />
+
             <input type="submit" class="popup__button-save" value="Сохранить" />
           </form>
         </div>

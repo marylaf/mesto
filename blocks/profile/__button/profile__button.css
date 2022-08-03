@@ -3,11 +3,11 @@
   height: 50px;
   background: none;
   background-repeat: no-repeat;
-  background-image: url("../../../images/Add.Button.svg");
-  background-size: cover;
+  background-image: url("../../../images/Vector\(6\).svg");
+  background-position: center;
   padding: 0;
   cursor: pointer;
-  border: none;
+  border: 2px solid #ffffff;
   border-radius: 2px;
   opacity: 1;
 }
@@ -17,6 +17,7 @@
     width: 282px;
     height: 50px;
     margin: 0 auto;
+    background-image: url("../../../images/Vector\(8\).svg");
   }
 }
 

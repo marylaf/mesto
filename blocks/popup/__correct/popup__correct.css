@@ -1,5 +1,5 @@
 .popup__correct {
-  max-width: 330px;
+  min-width: 330px;
   font-family: "Inter", "Arial", sans-serif;
   font-weight: 900;
   font-size: 24px;
@@ -8,15 +8,17 @@
   padding-top: 34px;
   padding-bottom: 39px;
   padding-left: 36px;
+  padding-right: 64px;
 }
 
 @media screen and (max-width: 660px) {
   .popup__correct {
-    max-width: 238px;
+    min-width: 238px;
     font-size: 18px;
     line-height: 22px;
     padding-top: 25px;
     padding-bottom: 60px;
-    padding-left: 0;
+    padding-left: 22px;
+    padding-right: 22px;
   }
 }

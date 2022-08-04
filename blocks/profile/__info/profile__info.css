@@ -7,9 +7,6 @@
   grid-template-areas:
     "name pencil"
     "feature .";
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 @media screen and (max-width: 660px) {

@@ -10,6 +10,7 @@
   border: 2px solid #ffffff;
   border-radius: 2px;
   opacity: 1;
+  background-size: 22px 22px;
 }
 
 @media screen and (max-width: 660px) {
@@ -17,7 +18,7 @@
     width: 282px;
     height: 50px;
     margin: 0 auto;
-    background-image: url("../../../images/Vector\(8\).svg");
+    background-size: 16px 16px;
   }
 }
 

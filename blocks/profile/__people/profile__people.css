@@ -8,6 +8,5 @@
   .profile__people {
     flex-direction: column;
     padding-bottom: 36px;
-    align-items: center;
   }
 }

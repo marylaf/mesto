@@ -11,6 +11,7 @@ let nameInput = popupForm.querySelector(".popup__info_form_title");
 let jobInput = popupForm.querySelector(".popup__info_form_subtitle");
 // Функция открытия окна
 function openPopup() {
+  setInputValue();
   popup.classList.add("popup_opened");
 }
 // Функция закрытия окна
@@ -25,10 +26,7 @@ function setInputValue() {
   jobInput.value = profileSubtitle.textContent;
 }
 
-editButton.addEventListener("click", function () {
-  setInputValue();
-  openPopup(popup);
-});
+editButton.addEventListener("click", openPopup);
 // Функция изменения данных
 function setTextValue() {
   profileTitle.textContent = nameInput.value;

@@ -9,13 +9,14 @@
   background-image: url("../../../images/Vectorbut.svg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 10px 10px;
 }
 
 @media screen and (max-width: 660px) {
   .profile__pencil {
     margin-top: 8px;
     padding: 5.25px;
-    background-image: url("../../../images/Vector\(7\).svg");
+    background-size: 7.5px 7.5px;
   }
 }
 

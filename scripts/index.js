@@ -3,31 +3,41 @@ let editButton = document.querySelector(".profile__pencil");
 let closeButton = document.querySelector(".popup__button-drop");
 let profileTitle = document.querySelector(".profile__title");
 let profileSubtitle = document.querySelector(".profile__subtitle");
-let popupForm = document.querySelector(".popup__form");
-let nameInput;
-let jobInput;
 
+// Находим форму в DOM
+let popupForm = popup.querySelector(".popup__form");
+// Находим поля формы в DOM
+let nameInput = popupForm.querySelector(".popup__info_form_title");
+let jobInput = popupForm.querySelector(".popup__info_form_subtitle");
+// Функция открытия окна
 function openPopup() {
   popup.classList.add("popup_opened");
-  document.getElementById("popup__info_form_title").value =
-    profileTitle.textContent;
-  document.getElementById("popup__info_form_subtitle").value =
-    profileSubtitle.textContent;
 }
-
+// Функция закрытия окна
 function closePopup() {
   popup.classList.remove("popup_opened");
 }
-editButton.addEventListener("click", openPopup);
 closeButton.addEventListener("click", closePopup);
 
+// Функция переноса данных
+function setInputValue() {
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+}
+
+editButton.addEventListener("click", function () {
+  setInputValue();
+  openPopup(popup);
+});
+// Функция изменения данных
+function setTextValue() {
+  profileTitle.textContent = nameInput.value;
+  profileSubtitle.textContent = jobInput.value;
+}
+// Функция сохранения данных
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  nameInput = document.querySelector(".popup__info_form_title").value;
-  jobInput = document.querySelector(".popup__info_form_subtitle").value;
-  formTitle.textContent = nameInput;
-  formSubtitle.textContent = jobInput;
-
+  setTextValue();
   closePopup();
 }
 

@@ -10,6 +10,9 @@
   padding-top: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 17px;
+  /* text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; */
 }
 
 .popup__info:nth-child(2) {

@@ -1,8 +1,8 @@
 .profile__info {
   display: grid;
   grid-template-columns: 294px 24px;
-  grid-template-rows: 39px 18px;
-  row-gap: 16px;
+  grid-template-rows: 48px 22px;
+  row-gap: 10px;
   column-gap: 18px;
   grid-template-areas:
     "name pencil"
@@ -12,8 +12,8 @@
 @media screen and (max-width: 660px) {
   .profile__info {
     grid-template-columns: 189px 18px;
-    grid-template-rows: 26px 14px;
-    row-gap: 14px;
+    grid-template-rows: 33px 17px;
+    row-gap: 8px;
     column-gap: 10px;
   }
 }

@@ -23,7 +23,7 @@
   transition: opacity 0.5s linear;
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 768px) {
   .popup__button-save {
     min-width: 238px;
     font-size: 14px;

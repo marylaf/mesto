@@ -11,7 +11,7 @@
   padding-right: 64px;
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 768px) {
   .popup__correct {
     min-width: 238px;
     font-size: 18px;

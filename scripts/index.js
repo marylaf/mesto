@@ -28,6 +28,7 @@ function setInputValue() {
 
 editButton.addEventListener("click", openPopup);
 // Функция изменения данных
+
 function setTextValue() {
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;

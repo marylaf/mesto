@@ -1,16 +1,13 @@
 .elements__container {
   max-width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  row-gap: 17px;
-  column-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  row-gap: 20px;
+  column-gap: 17px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 650px) {
   .elements__container {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
     row-gap: 20px;
     column-gap: 0;
   }

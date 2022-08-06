@@ -1,9 +1,11 @@
 .content {
   max-width: 880px;
   margin: 0 auto;
+  padding-left: 19px;
+  padding-right: 19px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 650px) {
   .content {
     max-width: 282px;
   }
@@ -12,7 +14,5 @@
 @media screen and (max-width: 320px) {
   .content {
     max-width: calc(100% - 38px);
-    margin-right: 19px;
-    margin-left: 19px;
   }
 }

@@ -101,7 +101,7 @@
           </article>
         </div>
       </section>
-      <div class="popup">
+      <div class="popup" id="popup__edit">
         <div class="popup__container">
           <button class="popup__button-drop" type="button"></button>
           <h3 class="popup__correct">Редактировать профиль</h3>
@@ -121,6 +121,31 @@
             />
 
             <input type="submit" class="popup__button-save" value="Сохранить" />
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="popup__add">
+        <div class="popup__container">
+          <button class="popup__button-drop" type="button"></button>
+          <h3 class="popup__correct">Новое место</h3>
+          <form name="popup__form" id="popup__form" class="popup__form">
+            <input
+              placeholder="Название"
+              type="text"
+              class="popup__info popup__info_form_title"
+              id="popup__info_form_title"
+              name="popup__info_form_title"
+            />
+
+            <input
+              placeholder="Ссылка на картинку"
+              type="text"
+              class="popup__info popup__info_form_subtitle"
+              id="popup__info_form_subtitle"
+              name="popup__info_form_subtitle"
+            />
+
+            <input type="submit" class="popup__button-save" value="Создать" />
           </form>
         </div>
       </div>

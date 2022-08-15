@@ -1,6 +1,9 @@
 const popup = document.querySelector(".popup");
+const popupAddCard = document.querySelector(".popup_type_add-card");
+const popupUserInfo = document.querySelector(".popup_type_user-info");
 const editButton = document.querySelector(".profile__pencil");
 const addButton = document.querySelector(".profile__button");
+const closeButton = document.querySelector(".popup__button-drop");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 
@@ -13,14 +16,9 @@ let nameInput = popupForm.querySelector(".popup__info_form_title");
 let jobInput = popupForm.querySelector(".popup__info_form_subtitle");
 
 const popups = {
-  editProfile: document.querySelector(".popup_type_user-info"),
-  addButton: document.querySelector(".popup_type_add-card"),
+  editProfile: document.getElementById("popup__edit"),
+  addButton: document.getElementById("popup__add"),
 };
-
-[popups.editProfile, popups.addButton].forEach((popup) => {
-  const closeButton = popup.querySelector(".popup__button-drop");
-  closeButton.addEventListener("click", () => closePopup(popup));
-});
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -29,9 +27,11 @@ function openPopup(popup) {
 
 // Функция закрытия окна
 
-function closePopup(popup) {
+function closePopup() {
   popup.classList.remove("popup_opened");
 }
+
+closeButton.addEventListener("click", closePopup);
 
 // Функция переноса данных
 
@@ -55,7 +55,7 @@ function setTextValue() {
 function formSubmitHandler(evt) {
   evt.preventDefault();
   setTextValue();
-  closePopup(popup);
+  closePopup();
 }
 
 popupForm.addEventListener("submit", formSubmitHandler);

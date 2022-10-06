@@ -14,8 +14,3 @@
   opacity: 0.5;
   transition: opacity 0.5s linear;
 }
-
-.elements__button:active {
-  background: #000000;
-  transition: background 0.5s linear;
-}

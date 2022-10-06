@@ -1,52 +1,70 @@
 const popup = document.querySelector(".popup");
+const popupCard = document.querySelector(".popup_type_add-card");
 const editButton = document.querySelector(".profile__pencil");
-const addButton = document.querySelector(".profile__button");
+const closeButton = document.querySelector(".popup__button-drop");
+const closeButtonCard = document.querySelector(".popup__button-dropcard");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
+const editCardButton = document.querySelector(".profile__button");
+let allCard = document.querySelector(".elements__container");
+const cardImage = document.querySelector(".elements__image");
+const cardName = document.querySelector(".elements__name");
+const saveBtn = document.querySelector(".popup__button-save");
 
 // Находим форму в DOM
+
 let popupForm = popup.querySelector(".popup__form");
 
 // Находим поля формы в DOM
 
 let nameInput = popupForm.querySelector(".popup__info_form_title");
+
 let jobInput = popupForm.querySelector(".popup__info_form_subtitle");
 
-const popups = {
-  editProfile: document.querySelector(".popup_type_user-info"),
-  addButton: document.querySelector(".popup_type_add-card"),
-};
+// Функция открытия окна
 
-[popups.editProfile, popups.addButton].forEach((popup) => {
-  const closeButton = popup.querySelector(".popup__button-drop");
-  closeButton.addEventListener("click", () => closePopup(popup));
-});
-
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
+function openPopup() {
   setInputValue();
+  popup.classList.add("popup_opened");
 }
+editButton.addEventListener("click", openPopup);
 
-// Функция закрытия окна
+// Функция открытия окна добавления карточки
 
-function closePopup(popup) {
+function openPopupCard() {
+  popupCard.classList.add("popup_opened");
+}
+editCardButton.addEventListener("click", openPopupCard);
+
+//Функция закрытия окна
+
+function closePopup() {
   popup.classList.remove("popup_opened");
 }
 
-// Функция переноса данных
+closeButton.addEventListener("click", closePopup);
+
+// Функция закрытия окна добавления карточки
+
+function closePopupCard() {
+  popupCard.classList.remove("popup_opened");
+}
+
+closeButtonCard.addEventListener("click", closePopupCard);
+
+//Функция переноса данных
 
 function setInputValue() {
   nameInput.value = profileTitle.textContent;
+
   jobInput.value = profileSubtitle.textContent;
 }
-
-addButton.addEventListener("click", () => openPopup(popups.addButton));
-editButton.addEventListener("click", () => openPopup(popups.editProfile));
 
 // Функция изменения данных
 
 function setTextValue() {
   profileTitle.textContent = nameInput.value;
+
   profileSubtitle.textContent = jobInput.value;
 }
 
@@ -54,8 +72,10 @@ function setTextValue() {
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
+
   setTextValue();
-  closePopup(popup);
+
+  closePopup();
 }
 
 popupForm.addEventListener("submit", formSubmitHandler);
@@ -86,3 +106,82 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1657070969523-f59f91f9c3d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80",
   },
 ];
+
+function render() {
+  allCard.innerHTML = "";
+  initialCards.forEach((item) => {
+    allCard.innerHTML += `<article class="elements__item">
+    <button
+    class="popup__button-trash"
+    type="button"
+  ></button>
+    <img
+      class="elements__image"
+      src="${item.link}"
+      alt="храм"
+    />
+    <div class="elements__block">
+      <h2 class="elements__name">${item.name}</h2>
+      <button type="button" class="elements__button"></button>
+    </div>
+    </article>`;
+  });
+}
+
+// Функция добавления новой карточки
+
+const nameInputNewCard = popupCard.querySelector(".popup__info_form_name");
+const linkInput = popupCard.querySelector(".popup__info_form_link");
+
+// Функция переноса данных карточки
+
+function setInputValueNewCard() {
+  nameInputNewCard.textContent = name;
+  linkInput.textContent = link;
+}
+
+const addNewItem = () => {
+  initialCards.unshift({
+    name: nameInputNewCard.value,
+    link: linkInput.value,
+  });
+
+  initialCards.pop();
+
+  render();
+};
+
+render();
+
+function formSubmitHandlerNewCard(evt) {
+  evt.preventDefault();
+  addNewItem();
+  closePopupCard();
+}
+
+popupCard.addEventListener("submit", formSubmitHandlerNewCard);
+
+// Функция появления лайка
+const likes = document.querySelectorAll(".elements__button");
+
+likes.forEach((like) => {
+  like.addEventListener("click", () =>
+    like.classList.toggle("elements__button_active")
+  );
+});
+
+//Удаление картинки
+
+// Находим кнопку в дом
+
+const trashBtn = document.querySelectorAll(".popup__button-trash");
+
+console.log(trashBtn);
+
+//функция удаления
+deleteItem = (event) => {
+  const currentItem = event.target.closest(".elements__item");
+  currentItem.remove();
+};
+
+// кидаем обработчик событий на кнопку

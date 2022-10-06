@@ -176,12 +176,15 @@ likes.forEach((like) => {
 
 const trashBtn = document.querySelectorAll(".popup__button-trash");
 
-console.log(trashBtn);
+// Функция удаления
 
-//функция удаления
-deleteItem = (event) => {
-  const currentItem = event.target.closest(".elements__item");
+const deleteItem = (e) => {
+  const currentItem = e.target.closest(".elements__item");
   currentItem.remove();
 };
 
-// кидаем обработчик событий на кнопку
+// Кидаем обработчик событий на кнопку
+
+trashBtn.forEach((trash) => {
+  trash.addEventListener("click", deleteItem);
+});

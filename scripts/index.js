@@ -107,6 +107,11 @@ const initialCards = [
   },
 ];
 
+const deleteItem = (e) => {
+  const currentItem = e.target.closest(".elements__item");
+  currentItem.remove();
+};
+
 function render() {
   allCard.innerHTML = "";
   initialCards.forEach((item) => {
@@ -125,6 +130,16 @@ function render() {
       <button type="button" class="elements__button"></button>
     </div>
     </article>`;
+  });
+
+  // Находим кнопку в дом
+
+  const trashBtn = document.querySelectorAll(".popup__button-trash");
+
+  // Кидаем обработчик событий на кнопку
+
+  trashBtn.forEach((trash) => {
+    trash.addEventListener("click", deleteItem);
   });
 }
 
@@ -168,23 +183,4 @@ likes.forEach((like) => {
   like.addEventListener("click", () =>
     like.classList.toggle("elements__button_active")
   );
-});
-
-//Удаление картинки
-
-// Находим кнопку в дом
-
-const trashBtn = document.querySelectorAll(".popup__button-trash");
-
-// Функция удаления
-
-const deleteItem = (e) => {
-  const currentItem = e.target.closest(".elements__item");
-  currentItem.remove();
-};
-
-// Кидаем обработчик событий на кнопку
-
-trashBtn.forEach((trash) => {
-  trash.addEventListener("click", deleteItem);
 });

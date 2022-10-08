@@ -10,6 +10,8 @@ let allCard = document.querySelector(".elements__container");
 const cardImage = document.querySelector(".elements__image");
 const cardName = document.querySelector(".elements__name");
 const saveBtn = document.querySelector(".popup__button-save");
+const popupImage = document.querySelector(".popup_type_card-image");
+const closeButtonImage = document.querySelector(".popup__drop-image");
 
 // Находим форму в DOM
 
@@ -51,6 +53,14 @@ function closePopupCard() {
 }
 
 closeButtonCard.addEventListener("click", closePopupCard);
+
+// Функция закрытия попапа с картинкой
+
+function closePopupImage() {
+  popupImage.classList.remove("popup_opened");
+}
+
+closeButtonImage.addEventListener("click", closePopupImage);
 
 //Функция переноса данных
 
@@ -108,14 +118,17 @@ const initialCards = [
 ];
 
 const deleteItem = (e) => {
-  const currentItem = e.target.closest(".elements__item");
-  currentItem.remove();
+  const currentItemIndex = e.target
+    .closest(".elements__item")
+    .getAttribute("data-index");
+  initialCards.splice(currentItemIndex, 1);
+  render();
 };
 
 function render() {
   allCard.innerHTML = "";
-  initialCards.forEach((item) => {
-    allCard.innerHTML += `<article class="elements__item">
+  initialCards.forEach((item, index) => {
+    allCard.innerHTML += `<article class="elements__item" data-index="${index}">
     <button
     class="popup__button-trash"
     type="button"
@@ -141,6 +154,25 @@ function render() {
   trashBtn.forEach((trash) => {
     trash.addEventListener("click", deleteItem);
   });
+
+  // Функция появления лайка
+  const likes = document.querySelectorAll(".elements__button");
+
+  likes.forEach((like) => {
+    like.addEventListener("click", () =>
+      like.classList.toggle("elements__button_active")
+    );
+  });
+
+  // Функция открытия попапа с картинкой
+  const images = document.querySelectorAll(".elements__image");
+
+  images.forEach(function (image) {
+    image.addEventListener("click", (e) => {
+      setImageCardValue(e);
+      popupImage.classList.add("popup_opened");
+    });
+  });
 }
 
 // Функция добавления новой карточки
@@ -161,12 +193,15 @@ const addNewItem = () => {
     link: linkInput.value,
   });
 
-  initialCards.pop();
+  if (initialCards.length > 6) {
+    initialCards.pop();
+  }
+
+  nameInputNewCard.value = "";
+  linkInput.value = "";
 
   render();
 };
-
-render();
 
 function formSubmitHandlerNewCard(evt) {
   evt.preventDefault();
@@ -176,11 +211,19 @@ function formSubmitHandlerNewCard(evt) {
 
 popupCard.addEventListener("submit", formSubmitHandlerNewCard);
 
-// Функция появления лайка
-const likes = document.querySelectorAll(".elements__button");
+// Находим элементы в дом
 
-likes.forEach((like) => {
-  like.addEventListener("click", () =>
-    like.classList.toggle("elements__button_active")
-  );
-});
+const cardValueImage = document.querySelector(".popup__image");
+const cardValueSbt = document.querySelector(".popup__subtitle");
+
+// Функция переноса данных картинки и подзаголовка
+
+const setImageCardValue = (e) => {
+  const currentItemIndex = e.target
+    .closest(".elements__item")
+    .getAttribute("data-index");
+  cardValueImage.src = initialCards[currentItemIndex].link;
+  cardValueSbt.textContent = initialCards[currentItemIndex].name;
+};
+
+render();

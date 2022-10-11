@@ -1,21 +1,19 @@
-const popup = document.querySelector(".popup");
+const mainPopup = document.querySelector(".popup");
+const profilePopup = document.querySelector(".profile-popup");
 const popupCard = document.querySelector(".popup_type_add-card");
 const editButton = document.querySelector(".profile__pencil");
-const closeButton = document.querySelector(".popup__button-drop");
-const closeButtonCard = document.querySelector(".popup__button-dropcard");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const editCardButton = document.querySelector(".profile__button");
-let allCard = document.querySelector(".elements__container");
+const allCard = document.querySelector(".elements__container");
 const cardImage = document.querySelector(".elements__image");
-const cardName = document.querySelector(".elements__name");
 const saveBtn = document.querySelector(".popup__button-save");
 const popupImage = document.querySelector(".popup_type_card-image");
-const closeButtonImage = document.querySelector(".popup__drop-image");
+const template = document.querySelector(".template");
 
 // Находим форму в DOM
 
-let popupForm = popup.querySelector(".popup__form");
+let popupForm = profilePopup.querySelector(".popup__form");
 
 // Находим поля формы в DOM
 
@@ -23,44 +21,51 @@ let nameInput = popupForm.querySelector(".popup__info_form_title");
 
 let jobInput = popupForm.querySelector(".popup__info_form_subtitle");
 
-// Функция открытия окна
+//Универсальные функции открытия и закрытия попапов
 
-function openPopup() {
-  setInputValue();
+function openPopup(popup) {
+  if (popup === profilePopup) {
+    setInputValue();
+  }
   popup.classList.add("popup_opened");
 }
-editButton.addEventListener("click", openPopup);
 
-// Функция открытия окна добавления карточки
+const deleteItem = (e) => {
+  const currentElement = e.target.closest(".elements__item");
+  currentElement.remove();
+};
 
-function openPopupCard() {
-  popupCard.classList.add("popup_opened");
-}
-editCardButton.addEventListener("click", openPopupCard);
+const setImageCardValue = (e) => {
+  const cardName = document.querySelector(".elements__name");
+  const cardValueImage = document.querySelector(".popup__image");
+  const cardValueSbt = document.querySelector(".popup__subtitle");
+  // const currentItemIndexName = e.target.closest(".elements__name");
+  const currentItemIndex = e.target.closest(".elements__image");
+  const currentItemIndexName = e.target.closest(".elements__name");
+  cardValueImage.src = currentItemIndex.src;
+  cardValueImage.alt = currentItemIndex.alt;
 
-//Функция закрытия окна
+  cardValueSbt.textContent = cardName.textContent;
+  console.log(currentItemIndex);
+};
 
-function closePopup() {
+editButton.addEventListener("click", () => openPopup(mainPopup));
+
+editCardButton.addEventListener("click", () => openPopup(popupCard));
+
+function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-closeButton.addEventListener("click", closePopup);
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll(".popup__button-drop");
 
-// Функция закрытия окна добавления карточки
-
-function closePopupCard() {
-  popupCard.classList.remove("popup_opened");
-}
-
-closeButtonCard.addEventListener("click", closePopupCard);
-
-// Функция закрытия попапа с картинкой
-
-function closePopupImage() {
-  popupImage.classList.remove("popup_opened");
-}
-
-closeButtonImage.addEventListener("click", closePopupImage);
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап
+  const popup = button.closest(".popup");
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener("click", () => closePopup(popup));
+});
 
 //Функция переноса данных
 
@@ -80,15 +85,15 @@ function setTextValue() {
 
 // Функция сохранения данных
 
-function formSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
   setTextValue();
 
-  closePopup();
+  closePopup(mainPopup);
 }
 
-popupForm.addEventListener("submit", formSubmitHandler);
+popupForm.addEventListener("submit", handleProfileFormSubmit);
 
 const initialCards = [
   {
@@ -117,113 +122,64 @@ const initialCards = [
   },
 ];
 
-const deleteItem = (e) => {
-  const currentItemIndex = e.target
-    .closest(".elements__item")
-    .getAttribute("data-index");
-  initialCards.splice(currentItemIndex, 1);
-  render();
-};
+function createCard(link, name) {
+  const currentItem = template.content.cloneNode(true);
+  const currentImage = currentItem.querySelector(".elements__image");
+  const currentName = currentItem.querySelector(".elements__name");
+  currentImage.src = link;
+  currentName.textContent = name;
 
-function render() {
-  allCard.innerHTML = "";
-  initialCards.forEach((item, index) => {
-    allCard.innerHTML += `<article class="elements__item" data-index="${index}">
-    <button
-    class="popup__button-trash"
-    type="button"
-  ></button>
-    <img
-      class="elements__image"
-      src="${item.link}"
-      alt="храм"
-    />
-    <div class="elements__block">
-      <h2 class="elements__name">${item.name}</h2>
-      <button type="button" class="elements__button"></button>
-    </div>
-    </article>`;
-  });
-
-  // Находим кнопку в дом
-
-  const trashBtn = document.querySelectorAll(".popup__button-trash");
-
-  // Кидаем обработчик событий на кнопку
-
-  trashBtn.forEach((trash) => {
-    trash.addEventListener("click", deleteItem);
-  });
-
-  // Функция появления лайка
-  const likes = document.querySelectorAll(".elements__button");
-
-  likes.forEach((like) => {
-    like.addEventListener("click", () =>
-      like.classList.toggle("elements__button_active")
-    );
-  });
-
-  // Функция открытия попапа с картинкой
-  const images = document.querySelectorAll(".elements__image");
-
-  images.forEach(function (image) {
-    image.addEventListener("click", (e) => {
-      setImageCardValue(e);
-      popupImage.classList.add("popup_opened");
-    });
-  });
+  return currentItem;
 }
 
-// Функция добавления новой карточки
+// // Функция добавления новой карточки
 
 const nameInputNewCard = popupCard.querySelector(".popup__info_form_name");
 const linkInput = popupCard.querySelector(".popup__info_form_link");
 
-// Функция переноса данных карточки
+function addNewItem(name, link, isPrepend = true) {
+  const item = createCard(link, name);
 
-function setInputValueNewCard() {
-  nameInputNewCard.textContent = name;
-  linkInput.textContent = link;
+  addListeners(item);
+
+  if (isPrepend) {
+    allCard.prepend(item);
+  } else {
+    allCard.append(item);
+  }
+  linkInput.value = "";
+  nameInputNewCard.value = "";
 }
 
-const addNewItem = () => {
-  initialCards.unshift({
-    name: nameInputNewCard.value,
-    link: linkInput.value,
+function handleCardFormSubmit(evt) {
+  evt.preventDefault();
+  addNewItem(nameInputNewCard.value, linkInput.value);
+  closePopup(popupCard);
+}
+
+popupCard.addEventListener("submit", handleCardFormSubmit);
+
+function addListeners(card) {
+  const like = card.querySelector(".elements__button");
+
+  like.addEventListener("click", () => {
+    like.classList.toggle("elements__button_active");
   });
 
-  if (initialCards.length > 6) {
-    initialCards.pop();
-  }
+  const trashBtn = card.querySelector(".popup__button-trash");
 
-  nameInputNewCard.value = "";
-  linkInput.value = "";
+  trashBtn.addEventListener("click", deleteItem);
 
-  render();
-};
+  const image = card.querySelector(".elements__image");
 
-function formSubmitHandlerNewCard(evt) {
-  evt.preventDefault();
-  addNewItem();
-  closePopupCard();
+  image.addEventListener("click", (e) => {
+    setImageCardValue(e);
+    openPopup(popupImage);
+  });
 }
-
-popupCard.addEventListener("submit", formSubmitHandlerNewCard);
-
-// Находим элементы в дом
-
-const cardValueImage = document.querySelector(".popup__image");
-const cardValueSbt = document.querySelector(".popup__subtitle");
 
 // Функция переноса данных картинки и подзаголовка
 
-const setImageCardValue = (e) => {
-  const currentItemIndex = e.target
-    .closest(".elements__item")
-    .getAttribute("data-index");
-  cardValueImage.src = initialCards[currentItemIndex].link;
-  cardValueSbt.textContent = initialCards[currentItemIndex].name;
-};
-
-render();
+initialCards.forEach((item) => {
+  addNewItem(item.name, item.link, false);
+});

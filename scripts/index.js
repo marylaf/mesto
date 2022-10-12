@@ -1,5 +1,6 @@
 const mainPopup = document.querySelector(".popup");
 const profilePopup = document.querySelector(".profile-popup");
+const cardName = document.querySelector(".elements__name");
 const popupCard = document.querySelector(".popup_type_add-card");
 const editButton = document.querySelector(".profile__pencil");
 const profileTitle = document.querySelector(".profile__title");
@@ -36,17 +37,16 @@ const deleteItem = (e) => {
 };
 
 const setImageCardValue = (e) => {
-  const cardName = document.querySelector(".elements__name");
   const cardValueImage = document.querySelector(".popup__image");
   const cardValueSbt = document.querySelector(".popup__subtitle");
-  // const currentItemIndexName = e.target.closest(".elements__name");
   const currentItemIndex = e.target.closest(".elements__image");
-  const currentItemIndexName = e.target.closest(".elements__name");
+  const currentItemIndexName = e.target
+    .closest(".elements__item")
+    .querySelector(".elements__name");
   cardValueImage.src = currentItemIndex.src;
   cardValueImage.alt = currentItemIndex.alt;
 
-  cardValueSbt.textContent = cardName.textContent;
-  console.log(currentItemIndex);
+  cardValueSbt.textContent = currentItemIndexName.textContent;
 };
 
 editButton.addEventListener("click", () => openPopup(mainPopup));

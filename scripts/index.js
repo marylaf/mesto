@@ -11,23 +11,22 @@ const cardImage = document.querySelector(".elements__image");
 const saveBtn = document.querySelector(".popup__button-save");
 const popupImage = document.querySelector(".popup_type_card-image");
 const template = document.querySelector(".template");
+const cardValueImage = document.querySelector(".popup__image");
+const cardValueSbt = document.querySelector(".popup__subtitle");
 
 // Находим форму в DOM
 
-let popupForm = profilePopup.querySelector(".popup__form");
+const popupForm = profilePopup.querySelector(".popup__form");
 
 // Находим поля формы в DOM
 
-let nameInput = popupForm.querySelector(".popup__info_form_title");
+const nameInput = popupForm.querySelector(".popup__info_form_title");
 
-let jobInput = popupForm.querySelector(".popup__info_form_subtitle");
+const jobInput = popupForm.querySelector(".popup__info_form_subtitle");
 
 //Универсальные функции открытия и закрытия попапов
 
 function openPopup(popup) {
-  if (popup === profilePopup) {
-    setInputValue();
-  }
   popup.classList.add("popup_opened");
 }
 
@@ -37,8 +36,6 @@ const deleteItem = (e) => {
 };
 
 const setImageCardValue = (e) => {
-  const cardValueImage = document.querySelector(".popup__image");
-  const cardValueSbt = document.querySelector(".popup__subtitle");
   const currentItemIndex = e.target.closest(".elements__image");
   const currentItemIndexName = e.target
     .closest(".elements__item")
@@ -48,8 +45,6 @@ const setImageCardValue = (e) => {
 
   cardValueSbt.textContent = currentItemIndexName.textContent;
 };
-
-editButton.addEventListener("click", () => openPopup(mainPopup));
 
 editCardButton.addEventListener("click", () => openPopup(popupCard));
 
@@ -82,6 +77,12 @@ function setTextValue() {
 
   profileSubtitle.textContent = jobInput.value;
 }
+
+function openPopupCardProfile() {
+  setInputValue();
+  openPopup(profilePopup);
+}
+editButton.addEventListener("click", () => openPopupCardProfile(profilePopup));
 
 // Функция сохранения данных
 
@@ -127,8 +128,9 @@ function createCard(link, name) {
   const currentImage = currentItem.querySelector(".elements__image");
   const currentName = currentItem.querySelector(".elements__name");
   currentImage.src = link;
+  currentImage.alt = name;
   currentName.textContent = name;
-
+  addListeners(currentItem);
   return currentItem;
 }
 
@@ -139,8 +141,6 @@ const linkInput = popupCard.querySelector(".popup__info_form_link");
 
 function addNewItem(name, link, isPrepend = true) {
   const item = createCard(link, name);
-
-  addListeners(item);
 
   if (isPrepend) {
     allCard.prepend(item);

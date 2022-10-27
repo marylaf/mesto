@@ -30,14 +30,14 @@ function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
 
-const deleteItem = (e) => {
-  const currentElement = e.target.closest(".elements__item");
+const deleteItem = (evt) => {
+  const currentElement = evt.target.closest(".elements__item");
   currentElement.remove();
 };
 
-const setImageCardValue = (e) => {
-  const currentItemIndex = e.target.closest(".elements__image");
-  const currentItemIndexName = e.target
+const setImageCardValue = (evt) => {
+  const currentItemIndex = evt.target.closest(".elements__image");
+  const currentItemIndexName = evt.target
     .closest(".elements__item")
     .querySelector(".elements__name");
   cardValueImage.src = currentItemIndex.src;
@@ -51,6 +51,29 @@ editCardButton.addEventListener("click", () => openPopup(popupCard));
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
+
+popups = [profilePopup, popupCard, popupImage];
+
+// функция закрытия попапа overlay
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", function (evt) {
+    if (evt.target == evt.currentTarget) {
+      closePopup(popup);
+    }
+  });
+});
+
+// функция закрытия при нажатии на Esc
+
+popups.forEach((popup) => {
+  document.addEventListener("keydown", function (evt) {
+    const key = evt.key;
+    if (key === "Escape") {
+      closePopup(popup);
+    }
+  });
+});
 
 // находим все крестики проекта по универсальному селектору
 const closeButtons = document.querySelectorAll(".popup__button-drop");

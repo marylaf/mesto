@@ -38,22 +38,38 @@
         <div class="popup__container">
           <button class="popup__button-drop" type="button"></button>
           <h3 class="popup__correct">Редактировать профиль</h3>
-          <form name="popup__form" id="popup__form" class="popup__form">
+          <form
+            name="popup__form"
+            id="popup__form"
+            class="popup__form"
+            novalidate
+          >
             <input
               type="text"
               class="popup__info popup__info_form_title"
-              id="popup__info_form_title"
-              name="popup__info_form_title"
+              id="title-input"
+              name="form-title"
+              minlength="2"
+              maxlength="40"
+              required
             />
-
+            <span class="span title-input-error"></span>
             <input
               type="text"
               class="popup__info popup__info_form_subtitle"
-              id="popup__info_form_subtitle"
-              name="popup__info_form_subtitle"
+              id="subtitle-input"
+              name="form-subtitle"
+              minlength="2"
+              maxlength="200"
+              required
             />
-
-            <input type="submit" class="popup__button-save" value="Сохранить" />
+            <span class="span subtitle-input-error"></span>
+            <input
+              type="submit"
+              class="popup__button-save"
+              value="Сохранить"
+              disabled
+            />
           </form>
         </div>
       </div>
@@ -61,22 +77,33 @@
         <div class="popup__container">
           <button class="popup__button-drop" type="button"></button>
           <h3 class="popup__correct">Новое место</h3>
-          <form name="popup__form" class="popup__form">
+          <form name="popup__form" class="popup__form" novalidate>
             <input
               placeholder=" Название"
-              type=" text"
+              type="text"
+              id="name-input"
               class="popup__info popup__info_form_name"
-              name="popup__info_form_title"
+              name="info-name"
+              minlength="2"
+              maxlength="30"
+              required
             />
-
+            <span class="span name-input-error"></span>
             <input
               placeholder=" Ссылка на картинку"
-              type="text"
+              type="url"
               class="popup__info popup__info_form_link"
-              name="popup__info_form_subtitle"
+              name="info-link"
+              id="link-input"
+              required
             />
-
-            <input type="submit" class="popup__button-save" value="Создать" />
+            <span class="span link-input-error"></span>
+            <input
+              type="submit"
+              class="popup__button-save"
+              value="Создать"
+              disabled
+            />
           </form>
         </div>
       </div>
@@ -101,5 +128,6 @@
         </div></article
     ></template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

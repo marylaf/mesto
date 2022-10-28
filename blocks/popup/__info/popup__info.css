@@ -20,3 +20,9 @@
     margin-bottom: 45px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .popup__info {
+    padding-top: 13px;
+  }
+}

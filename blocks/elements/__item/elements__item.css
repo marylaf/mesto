@@ -1,3 +1,6 @@
 .elements__item {
   position: relative;
 }
+.elements__item:hover {
+  cursor: pointer;
+}

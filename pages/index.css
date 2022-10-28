@@ -48,3 +48,4 @@
 @import url(../blocks/popup/__info/_type/popup__info_type_error.css);
 @import url(../blocks/popup/__button-save/_inactive/popup__button-save_inactive.css);
 @import url(../blocks/span/span.css);
+@import url(../blocks/popup/_type/popup_type_card-image.css);

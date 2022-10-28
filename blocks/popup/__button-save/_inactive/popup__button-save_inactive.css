@@ -6,7 +6,7 @@
 }
 
 .popup__button-save_inactive:hover {
-  cursor: pointer;
+  cursor: none;
   opacity: 0.2;
   transition: none;
 }

@@ -169,7 +169,7 @@ const handleCardFormSubmit = (info) => (evt) => {
   toggleButtonState(inputList, saveBtn, info);
   inputList.forEach((formInput) => {
     formInput.addEventListener("input", () => {
-      toggleInputErrorState(form, formInput, info);
+      toggleInputErrorState(popupCard, formInput, info);
       toggleButtonState(inputList, saveBtn, info);
     });
   });

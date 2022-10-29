@@ -113,8 +113,9 @@ const handleProfileFormSubmit = (info) => (evt) => {
   setProfileTextValue();
 
   closePopup(profilePopup);
-  // linkInput.value = "";
-  // nameInputNewCard.value = "";
+
+  nameInput.value = "";
+  jobInput.value = "";
 
   const inputList = Array.from(
     profilePopup.querySelectorAll(info.inputSelector)
@@ -123,7 +124,7 @@ const handleProfileFormSubmit = (info) => (evt) => {
   toggleButtonState(inputList, saveBtn, info);
   inputList.forEach((formInput) => {
     formInput.addEventListener("input", () => {
-      toggleInputErrorState(form, formInput, info);
+      toggleInputErrorState(profilePopup, formInput, info);
       toggleButtonState(inputList, saveBtn, info);
     });
   });

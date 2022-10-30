@@ -14,7 +14,7 @@
   padding-top: 14px;
   padding-bottom: 18px;
   opacity: 1;
-  margin-top: 31px;
+  margin-top: 15px;
   margin-bottom: 37px;
 }
 
@@ -31,5 +31,6 @@
     line-height: 17px;
     padding-bottom: 14px;
     margin-bottom: 25px;
+    margin-top: 12px;
   }
 }

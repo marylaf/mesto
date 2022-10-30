@@ -1,4 +1,4 @@
-const objInfo = {
+const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__info",
   submitButtonSelector: ".popup__button-save",
@@ -48,16 +48,13 @@ const enableValidation = (info) => {
   const formList = Array.from(document.querySelectorAll(info.formSelector));
   // Переберём полученную коллекцию
   formList.forEach((form) => {
-    form.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-    });
     setEventListeners(form, info);
   });
 };
 
 // Вызовем функцию
 
-enableValidation(objInfo);
+enableValidation(validationConfig);
 
 function toggleButtonState(inputList, saveBtn, info) {
   if (hasInvalidInputs(inputList)) {

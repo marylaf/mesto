@@ -25,12 +25,19 @@ const jobInput = popupProfileForm.querySelector(".popup__info_form_subtitle");
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener("keydown", function (evt) {
-    const key = evt.key;
-    if (key === "Escape") {
+  document.addEventListener("keydown", closePopupEsc);
+}
+
+function closePopupEsc(evt) {
+  const key = evt.key;
+  if (key === "Escape") {
+    popups.forEach((popup) => {
+      if (!popup.classList.contains("popup_opened")) {
+        return;
+      }
       closePopup(popup);
-    }
-  });
+    });
+  }
 }
 
 const deleteItem = (evt) => {
@@ -53,12 +60,7 @@ editCardButton.addEventListener("click", () => openPopup(popupCard));
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", function (evt) {
-    const key = evt.key;
-    if (key === "Escape") {
-      closePopup(popup);
-    }
-  });
+  document.removeEventListener("keydown", closePopupEsc);
 }
 
 popups = [profilePopup, popupCard, popupImage];
@@ -85,7 +87,7 @@ closeButtons.forEach((button) => {
 
 //Функция переноса данных
 
-function setProfileInputValue() {
+function setProfileInputValues() {
   nameInput.value = profileTitle.textContent;
 
   jobInput.value = profileSubtitle.textContent;
@@ -93,14 +95,14 @@ function setProfileInputValue() {
 
 // Функция изменения данных
 
-function setProfileTextValue() {
+function setProfileTextValues() {
   profileTitle.textContent = nameInput.value;
 
   profileSubtitle.textContent = jobInput.value;
 }
 
 function openPopupCardProfile() {
-  setProfileInputValue();
+  setProfileInputValues();
   openPopup(profilePopup);
 }
 editButton.addEventListener("click", () => openPopupCardProfile());
@@ -110,7 +112,7 @@ editButton.addEventListener("click", () => openPopupCardProfile());
 const handleProfileFormSubmit = (info) => (evt) => {
   evt.preventDefault();
 
-  setProfileTextValue();
+  setProfileTextValues();
 
   closePopup(profilePopup);
 
@@ -122,15 +124,12 @@ const handleProfileFormSubmit = (info) => (evt) => {
   );
   const saveBtn = profilePopup.querySelector(info.submitButtonSelector);
   toggleButtonState(inputList, saveBtn, info);
-  inputList.forEach((formInput) => {
-    formInput.addEventListener("input", () => {
-      toggleInputErrorState(profilePopup, formInput, info);
-      toggleButtonState(inputList, saveBtn, info);
-    });
-  });
 };
 
-popupProfileForm.addEventListener("submit", handleProfileFormSubmit(objInfo));
+popupProfileForm.addEventListener(
+  "submit",
+  handleProfileFormSubmit(validationConfig)
+);
 
 function createCard(link, name) {
   const currentItem = template.content.cloneNode(true);
@@ -139,7 +138,7 @@ function createCard(link, name) {
   currentImage.src = link;
   currentImage.alt = name;
   currentName.textContent = name;
-  cardAddListeners(currentItem);
+  addCardListeners(currentItem);
   return currentItem;
 }
 
@@ -168,17 +167,11 @@ const handleCardFormSubmit = (info) => (evt) => {
   const inputList = Array.from(popupCard.querySelectorAll(info.inputSelector));
   const saveBtn = popupCard.querySelector(info.submitButtonSelector);
   toggleButtonState(inputList, saveBtn, info);
-  inputList.forEach((formInput) => {
-    formInput.addEventListener("input", () => {
-      toggleInputErrorState(popupCard, formInput, info);
-      toggleButtonState(inputList, saveBtn, info);
-    });
-  });
 };
 
-popupCard.addEventListener("submit", handleCardFormSubmit(objInfo));
+popupCard.addEventListener("submit", handleCardFormSubmit(validationConfig));
 
-function cardAddListeners(card) {
+function addCardListeners(card) {
   const like = card.querySelector(".elements__button");
 
   like.addEventListener("click", () => {

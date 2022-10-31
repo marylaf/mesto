@@ -31,12 +31,8 @@ function openPopup(popup) {
 function closePopupEsc(evt) {
   const key = evt.key;
   if (key === "Escape") {
-    popups.forEach((popup) => {
-      if (!popup.classList.contains("popup_opened")) {
-        return;
-      }
-      closePopup(popup);
-    });
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
   }
 }
 

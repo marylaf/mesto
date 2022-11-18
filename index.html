@@ -8,9 +8,9 @@
     <meta name="author" content="Maria Lafutkina" />
     <title>Место</title>
     <link rel="stylesheet" type="text/css" href="./pages/index.css" />
-    <script defer src="./scripts/cards.js"></script>
-    <script defer src="./scripts/validate.js"></script>
-    <script defer src="./scripts/index.js"></script>
+    <script type="module" defer src="./scripts/Card.js"></script>
+    <script type="module" defer src="./scripts/FormValidator.js"></script>
+    <script type="module" defer src="./scripts/index.js"></script>
   </head>
   <body class="page">
     <header class="header">
@@ -81,12 +81,7 @@
               required
             />
             <span class="span subtitle-input-error"></span>
-            <input
-              type="submit"
-              class="popup__button-save"
-              value="Сохранить"
-              disabled
-            />
+            <input type="submit" class="popup__button-save" value="Сохранить" />
           </form>
         </div>
       </div>
@@ -143,7 +138,7 @@
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
-    <template class="template">
+    <template class="template template_type_default">
       <article class="elements__item">
         <button
           class="popup__button-trash"

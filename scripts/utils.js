@@ -1,4 +1,5 @@
 import Card from "./Card.js";
+
 export const nameInputNewCard = document.querySelector(
   ".popup__info_form_name"
 );
@@ -6,13 +7,12 @@ export const linkInput = document.querySelector(".popup__info_form_link");
 export const popupImage = document.querySelector(".popup_type_card-image");
 const cardValueImage = document.querySelector(".popup__image");
 const cardValueSbt = document.querySelector(".popup__subtitle");
-const allCards = document.querySelector(".elements__container");
 
-export function openPopup(popup) {
-  popup.classList.add("popup_opened");
+// export function openPopup(popup) {
+//   popup.classList.add("popup_opened");
 
-  document.addEventListener("keydown", closePopupEsc);
-}
+//   document.addEventListener("keydown", closePopupEsc);
+// }
 
 export function deleteItem(evt) {
   const currentElement = evt.target.closest(".elements__item");
@@ -21,7 +21,8 @@ export function deleteItem(evt) {
 
 export function createNewCard(item) {
   const card = new Card(item, ".template_type_default");
-  allCards.prepend(card.createCard());
+  const cardElement = card.createCard();
+  return cardElement;
 }
 
 export function setImageCardValues(evt) {
@@ -35,15 +36,15 @@ export function setImageCardValues(evt) {
   cardValueSbt.textContent = currentItemIndexName.textContent;
 }
 
-function closePopupEsc(evt) {
-  const key = evt.key;
-  if (key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
-    closePopup(openedPopup);
-  }
-}
+// function closePopupEsc(evt) {
+//   const key = evt.key;
+//   if (key === "Escape") {
+//     const openedPopup = document.querySelector(".popup_opened");
+//     closePopup(openedPopup);
+//   }
+// }
 
-export function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closePopupEsc);
-}
+// export function closePopup(popup) {
+//   popup.classList.remove("popup_opened");
+//   document.removeEventListener("keydown", closePopupEsc);
+// }

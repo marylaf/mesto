@@ -1,14 +1,11 @@
-import {
-  popupImage,
-  openPopup,
-  deleteItem,
-  setImageCardValues,
-} from "./utils.js";
+import { deleteItem } from "./utils.js";
+import Popup from "./Popup.js";
 
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, onClick) {
     this._data = data;
     this._templateSelector = templateSelector;
+    this._onClick = onClick;
   }
 
   _getTemplate() {
@@ -50,8 +47,7 @@ export default class Card {
     this._view
       .querySelector(".elements__image")
       .addEventListener("click", (e) => {
-        setImageCardValues(e);
-        openPopup(popupImage);
+        this._onClick();
       });
   }
 }

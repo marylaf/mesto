@@ -1,14 +1,14 @@
-import { initialCards } from "./constants.js";
-import FormValidator from "./FormValidator.js";
-import UserInfo from "./UserInfo.js";
-import Section from "./Section.js";
-import PopupWithForm from "./PopupWithForm.js";
+import "./index.css";
+import { initialCards } from "../components/constants.js";
+import FormValidator from "../components/FormValidator.js";
+import UserInfo from "../components/UserInfo.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 import {
   createNewCard,
   nameInputNewCard,
   linkInput,
-  popupImage,
-} from "./utils.js";
+} from "../components/utils.js";
 
 const validationConfig = {
   formSelector: ".popup__form",
@@ -22,8 +22,6 @@ const validationConfig = {
 const profilePopup = document.querySelector(".profile-popup");
 const popupCard = document.querySelector(".popup_type_add-card");
 const editButton = document.querySelector(".profile__pencil");
-// const profileTitle = document.querySelector(".profile__title");
-// const profileSubtitle = document.querySelector(".profile__subtitle");
 const editCardButton = document.querySelector(".profile__button");
 const cardListContainer = ".elements__container";
 const inputList = Array.from(
@@ -33,24 +31,6 @@ const saveBtn = profilePopup.querySelector(
   validationConfig.submitButtonSelector
 );
 const popupProfileForm = profilePopup.querySelector(".popup__form");
-// const nameInput = popupProfileForm.querySelector(".popup__info_form_title");
-// const jobInput = popupProfileForm.querySelector(".popup__info_form_subtitle");
-
-//Функция переноса данных
-
-// function setProfileInputValues() {
-//   nameInput.value = profileTitle.textContent;
-
-//   jobInput.value = profileSubtitle.textContent;
-// }
-
-// Функция изменения данных
-
-// function setProfileTextValues() {
-//   profileTitle.textContent = nameInput.value;
-
-//   profileSubtitle.textContent = jobInput.value;
-// }
 
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__title",
@@ -58,20 +38,18 @@ const userInfo = new UserInfo({
 });
 
 function openPopupCardProfile() {
-  // setProfileInputValues();
-  userInfo.getUserInfo();
+  const information = userInfo.getUserInfo();
+
+  popupFormProfile.setInputValues(information.Name, information.Description);
+
   popupFormProfile.open();
 }
 
 // Функция сохранения данных
 
-const handleProfileFormSubmit = () => {
-  // setProfileTextValues();
-  userInfo.setUserInfo();
-
+const handleProfileFormSubmit = (data) => {
+  userInfo.setUserInfo(data);
   popupFormProfile.close();
-  nameInput.value = "";
-  jobInput.value = "";
   popupProfileFormValidator.toggleButtonState(inputList, saveBtn);
 };
 
@@ -94,8 +72,6 @@ function handleCardFormSubmit() {
   });
   cardsList.addItem(card);
   popupFormAddCard.close();
-  linkInput.value = "";
-  nameInputNewCard.value = "";
   popupAddFormValidator.toggleButtonState(inputList, saveBtn);
 }
 

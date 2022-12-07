@@ -7,15 +7,19 @@
     <meta name="description" content="Russian cities" />
     <meta name="author" content="Maria Lafutkina" />
     <title>Место</title>
-    <link rel="stylesheet" type="text/css" href="./pages/index.css" />
-    <script type="module" defer src="./scripts/constants.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="./pages/index.css" /> -->
+    <!-- <script type="module" defer src="./scripts/constants.js"></script>
     <script type="module" defer src="./scripts/Card.js"></script>
-    <script type="module" defer src="./scripts/FormValidator.js"></script>
-    <script type="module" defer src="./scripts/index.js"></script>
+    <script type="module" defer src="./scripts/FormValidator.js"></script> -->
+    <!-- <script type="module" defer src="./scripts/index.js"></script> -->
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/Vector.svg" alt="Логотип" />
+      <img
+        class="header__logo"
+        src="<%=require('./images/Vector.svg')%>"
+        alt="Логотип"
+      />
     </header>
     <main class="content">
       <section class="profile">
@@ -23,9 +27,10 @@
           <div class="profile__people">
             <img
               class="profile__avatar"
-              src="./images/image(6).png"
+              src="<%=require('./images/image(6).png')%>"
               alt="портрет"
             />
+
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
               <p class="profile__subtitle">Исследователь океана</p>
@@ -65,7 +70,7 @@
               class="popup__info popup__info_form_title"
               id="title-input"
               placeholder="Имя"
-              name="form-title"
+              name="name"
               minlength="2"
               maxlength="40"
               required
@@ -75,7 +80,7 @@
               type="text"
               class="popup__info popup__info_form_subtitle"
               id="subtitle-input"
-              name="form-subtitle"
+              name="about"
               placeholder="О себе"
               minlength="2"
               maxlength="200"

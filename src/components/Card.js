@@ -1,11 +1,10 @@
 import { deleteItem } from "./utils.js";
-import Popup from "./Popup.js";
 
 export default class Card {
-  constructor(data, templateSelector, onClick) {
+  constructor(data, templateSelector, handleCardClick) {
     this._data = data;
     this._templateSelector = templateSelector;
-    this._onClick = onClick;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -47,7 +46,7 @@ export default class Card {
     this._view
       .querySelector(".elements__image")
       .addEventListener("click", (e) => {
-        this._onClick();
+        this._handleCardClick();
       });
   }
 }

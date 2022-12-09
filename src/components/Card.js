@@ -20,14 +20,14 @@ export default class Card {
     // Запишем разметку в приватное поле _view.
     // Так у других элементов появится доступ к ней.
     this._getTemplate();
-    this._addCardListeners();
+
     // Добавим данные
-    console.log(this._image);
     this._imageElement = this._view.querySelector(".elements__image");
     this._imageElement.src = this._image;
     this._imageElement.alt = this._title;
 
     this._view.querySelector(".elements__name").textContent = this._title;
+    this._addCardListeners();
     // Вернём элемент наружу
     return this._view;
   }
@@ -45,8 +45,8 @@ export default class Card {
         const currentElement = evt.target.closest(".elements__item");
         currentElement.remove();
       });
-    // this._imageElement.addEventListener("click", function () {
-    //   this._handleCardClick();
-    // });
+    this._imageElement.addEventListener("click", () => {
+      this._handleCardClick();
+    });
   }
 }

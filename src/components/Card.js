@@ -1,10 +1,10 @@
-import { deleteItem } from "./utils.js";
-
 export default class Card {
   constructor(data, templateSelector, handleCardClick) {
     this._data = data;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._image = data.link;
+    this._title = data.name;
   }
 
   _getTemplate() {
@@ -22,12 +22,12 @@ export default class Card {
     this._getTemplate();
     this._addCardListeners();
     // Добавим данные
+    console.log(this._image);
+    this._imageElement = this._view.querySelector(".elements__image");
+    this._imageElement.src = this._image;
+    this._imageElement.alt = this._title;
 
-    this._view.querySelector(".elements__image").src = this._data.link;
-    this._view.querySelector(".elements__image").alt = this._data.link;
-    this._view.querySelector(".elements__name").textContent = this._data.name;
-    this._link = this._view.querySelector(".elements__image").src;
-    this._name = this._view.querySelector(".elements__name").textContent;
+    this._view.querySelector(".elements__name").textContent = this._title;
     // Вернём элемент наружу
     return this._view;
   }
@@ -41,12 +41,12 @@ export default class Card {
 
     this._view
       .querySelector(".popup__button-trash")
-      .addEventListener("click", deleteItem);
-
-    this._view
-      .querySelector(".elements__image")
-      .addEventListener("click", (e) => {
-        this._handleCardClick();
+      .addEventListener("click", function (evt) {
+        const currentElement = evt.target.closest(".elements__item");
+        currentElement.remove();
       });
+    // this._imageElement.addEventListener("click", function () {
+    //   this._handleCardClick();
+    // });
   }
 }

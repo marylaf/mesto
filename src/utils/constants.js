@@ -1,3 +1,22 @@
+export const popupProfile = document.querySelector(".profile-popup");
+export const popupCard = document.querySelector(".popup_type_add-card");
+export const buttonEdit = document.querySelector(".profile__pencil");
+export const buttonCardEdit = document.querySelector(".profile__button");
+export const popupProfileForm = popupProfile.querySelector(".popup__form");
+export const nameInputNewCard = document.querySelector(
+  ".popup__info_form_name"
+);
+export const linkInput = document.querySelector(".popup__info_form_link");
+
+export const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__info",
+  submitButtonSelector: ".popup__button-save",
+  inactiveButtonClass: "popup__button-save_inactive",
+  inputErrorClass: "popup__info_type_error",
+  errorClass: "error",
+};
+
 export const initialCards = [
   {
     name: "Москва",

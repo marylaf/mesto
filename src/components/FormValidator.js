@@ -1,14 +1,14 @@
 export default class FormValidator {
-  constructor(data, elementForm) {
-    this._formSelector = data.formSelector;
-    this._inactiveButtonClass = data.inactiveButtonClass;
-    this._errorClass = data.errorClass;
+  constructor(config, elementForm) {
+    this._inactiveButtonClass = config.inactiveButtonClass;
+    this._errorClass = config.errorClass;
     this._elementForm = elementForm;
+    this._inputErrorClass = config.inputErrorClass;
     this._submitButton = this._elementForm.querySelector(
-      data.submitButtonSelector
+      config.submitButtonSelector
     );
     this._inputList = Array.from(
-      this._elementForm.querySelectorAll(data.inputSelector)
+      this._elementForm.querySelectorAll(config.inputSelector)
     );
   }
 
@@ -19,6 +19,7 @@ export default class FormValidator {
       `.${formInput.id}-error`
     );
     formInput.classList.add(this._inputErrorClass);
+    console.log(this._inputErrorClass);
     errorInput.textContent = errorMessage;
     errorInput.classList.add(this._errorClass);
   }
@@ -51,8 +52,8 @@ export default class FormValidator {
   }
 
   toggleButtonState() {
-    if (this._hasInvalidInputs(this._inputList)) {
-      this._submitButton.setAttribute("disabled", true);
+    if (this._hasInvalidInputs()) {
+      this._submitButton.disabled = "true";
       this._submitButton.classList.add(this._inactiveButtonClass);
     } else {
       this._submitButton.removeAttribute("disabled");
@@ -61,11 +62,11 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    this.toggleButtonState(this._inputList, this._submitButton);
+    this.toggleButtonState();
     this._inputList.forEach((formInput) => {
       formInput.addEventListener("input", () => {
         this._toggleInputErrorState(formInput);
-        this.toggleButtonState(this._inputList, this._submitButton);
+        this.toggleButtonState();
       });
     });
   }

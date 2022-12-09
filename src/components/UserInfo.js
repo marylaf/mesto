@@ -5,8 +5,8 @@ export default class UserInfo {
   }
   getUserInfo() {
     const userInfo = {
-      Name: this._name.textContent,
-      Description: this._description.textContent,
+      name: this._name.textContent,
+      about: this._description.textContent,
     };
     return userInfo;
   }

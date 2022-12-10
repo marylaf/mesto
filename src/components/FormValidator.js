@@ -19,7 +19,6 @@ export default class FormValidator {
       `.${formInput.id}-error`
     );
     formInput.classList.add(this._inputErrorClass);
-    console.log(this._inputErrorClass);
     errorInput.textContent = errorMessage;
     errorInput.classList.add(this._errorClass);
   }
@@ -53,7 +52,7 @@ export default class FormValidator {
 
   toggleButtonState() {
     if (this._hasInvalidInputs()) {
-      this._submitButton.disabled = "true";
+      this._submitButton.disabled = true;
       this._submitButton.classList.add(this._inactiveButtonClass);
     } else {
       this._submitButton.removeAttribute("disabled");

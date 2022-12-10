@@ -15,14 +15,15 @@ import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import { createNewCard } from "../utils/utils.js";
+import Card from "../components/Card.js";
 
-// const profileFormInputList = Array.from(
-//   popupProfile.querySelectorAll(validationConfig.inputSelector)
-// );
-// const btnSave = popupProfile.querySelector(
-//   validationConfig.submitButtonSelector
-// );
+export function createNewCard(cardData) {
+  const card = new Card(cardData, ".template_type_default", () => {
+    popupImage.open(cardData.link, cardData.name);
+  });
+  const cardElement = card.createCard();
+  return cardElement;
+}
 
 export const popupImage = new PopupWithImage(".popup_type_card-image");
 popupImage.setEventListeners();

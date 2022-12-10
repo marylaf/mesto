@@ -41,9 +41,9 @@ export default class Card {
 
     this._view
       .querySelector(".popup__button-trash")
-      .addEventListener("click", function (evt) {
-        const currentElement = evt.target.closest(".elements__item");
-        currentElement.remove();
+      .addEventListener("click", () => {
+        this._view.remove();
+        this._view = null;
       });
     this._imageElement.addEventListener("click", () => {
       this._handleCardClick();

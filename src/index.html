@@ -20,15 +20,12 @@
       <section class="profile">
         <div class="profile__container">
           <div class="profile__people">
-            <img
-              class="profile__avatar"
-              src="<%=require('./images/image(6).png')%>"
-              alt="портрет"
-            />
-
+            <div class="profile__avatar-pen">
+              <img class="profile__avatar" src="#" alt="портрет" />
+            </div>
             <div class="profile__info">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <p class="profile__subtitle">Исследователь океана</p>
+              <h1 class="profile__title"></h1>
+              <p class="profile__subtitle"></p>
               <button
                 type="button"
                 aria-label="Редактирование профиля"
@@ -135,6 +132,52 @@
           <h2 class="popup__subtitle"></h2>
         </div>
       </div>
+      <div class="popup popup-confirmation">
+        <div class="popup__container">
+          <button
+            class="popup__button-drop"
+            aria-label="Закрытие попапа"
+            type="button"
+          ></button>
+          <h3 class="popup__correct">Вы уверены?</h3>
+          <form name="popup__form" class="popup__form" novalidate>
+            <input
+              type="submit"
+              class="popup__button-save popup__button-save_type_confirmation"
+              value="Да"
+            />
+          </form>
+        </div>
+      </div>
+      <div class="popup popup-avatar">
+        <div class="popup__container">
+          <button
+            class="popup__button-drop"
+            aria-label="Закрытие попапа"
+            type="button"
+          ></button>
+          <h3 class="popup__correct popup__correct_type_avatar">
+            Обновить аватар
+          </h3>
+          <form name="popup__form" class="popup__form" novalidate>
+            <input
+              placeholder=" Ссылка на картинку"
+              type="url"
+              class="popup__info popup__info_form_avatar"
+              name="info-link"
+              id="link-input"
+              required
+            />
+            <span class="span link-input-error"></span>
+            <input
+              type="submit"
+              class="popup__button-save"
+              value="Сохранить"
+              disabled
+            />
+          </form>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
@@ -149,11 +192,14 @@
         <img class="elements__image" src="#" alt="храм" />
         <div class="elements__block">
           <h2 class="elements__name"></h2>
-          <button
-            type="button"
-            class="elements__button"
-            aria-label="Добавление лайка"
-          ></button>
+          <div class="elements__block-like">
+            <button
+              type="button"
+              class="elements__button"
+              aria-label="Добавление лайка"
+            ></button>
+            <span class="elements__button-count"></span>
+          </div>
         </div></article
     ></template>
   </body>

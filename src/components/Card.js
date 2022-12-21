@@ -22,7 +22,7 @@ export default class Card {
   _getTemplate() {
     const cardItem = document
       .querySelector(this._templateSelector)
-      .content.querySelector(".elements__item")
+      .content.querySelector(".card")
       .cloneNode(true);
 
     this._view = cardItem;
@@ -33,7 +33,6 @@ export default class Card {
     this._likeCount = this._view.querySelector(".elements__button-count");
     this._likeCount.textContent = this._likes.length;
 
-    const userLike = this._likes.find((user) => user._id === this._userOwnId);
     if (this.isLiked()) {
       this._setLike();
     } else {
@@ -56,7 +55,7 @@ export default class Card {
     this.putLikes(this._likes);
 
     if (this._ownerId !== this._userOwnId) {
-      this._deleteElement.style.display = "none";
+      this._deleteElement.classList.add("popup__button-trash_type_none");
     }
 
     this._addCardListeners();
@@ -70,7 +69,7 @@ export default class Card {
   }
 
   isLiked() {
-    const userLike = this._likes.find((user) => user._id === this._userOwnId);
+    const userLike = this._likes.some((user) => user._id === this._userOwnId);
     return userLike;
   }
 

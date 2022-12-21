@@ -1,6 +1,6 @@
-.elements__item {
+.card {
   position: relative;
 }
-.elements__item:hover {
+.card:hover {
   cursor: pointer;
 }

@@ -21,40 +21,6 @@ import { api } from "../components/Api.js";
 
 let userOwnId;
 
-// api
-//   .getProfile()
-//   .then((res) => {
-//     userInfo.setUserInfo(res);
-
-//     userOwnId = res._id;
-//   })
-//   .catch((err) => console.log(`Ошибка.....: ${err}`));
-
-// api
-//   .getInitialCards()
-//   .then((cardListAll) => {
-//     cardListAll.forEach((data) => {
-//       const card = createNewCard({
-//         name: data.name,
-//         link: data.link,
-//         likes: data.likes,
-//         id: data._id,
-//         userOwnId: userOwnId,
-//         ownerId: data.owner._id,
-//       });
-//       cardsSection.addItem(card);
-//     });
-//   })
-//   .catch((err) => console.log(`Ошибка.....: ${err}`));
-
-// api
-//   .getInitialCards()
-//   .then((cardListAll) => {
-//     cardsSection.renderItems(cardListAll);
-//     cardsSection.addItem(card);
-//   })
-//   .catch(console.log);
-
 export function createNewCard(cardData) {
   const card = new Card(
     cardData,
@@ -225,7 +191,16 @@ Promise.all([api.getProfile(), api.getInitialCards()])
     userInfo.setUserInfo(userData);
     userOwnId = userData._id;
 
-    cardsSection.renderItems(cardsData);
+    cardsSection.renderItems(
+      cardsData.map((card) => ({
+        name: card.name,
+        link: card.link,
+        likes: card.likes,
+        id: card._id,
+        userOwnId: userOwnId,
+        ownerId: card.owner._id,
+      }))
+    );
   })
 
   .catch((err) => console.log(err));
